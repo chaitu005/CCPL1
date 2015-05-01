@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="jumbotron1" >
+   <!-- <form>
+        <table align="center" class="tbl-login">
+            <tr>
+                <td><label class="lead">User Name</label></td>
+                <td><input type="text" class="input" /></td>
+            </tr>
+            <tr>
+                <td><label class="lead">Password</label></td>
+                <td><input type="password" class="input" /></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input class="btn btn-primary" type="submit" value="submit" /> 
+                    <input type="reset" class="btn btn-primary" /></td>
+            </tr>
+        </table>
+        </form>
+-->
+    <div class="main main-content">
+        <div class="login-form">
+            <h1>Member Login</h1>
+            <div class="head">
+                <img src="~/Images/user.png" alt="" />
+            </div>
+            <form action="Home/Validate" method="post">
+                <input type="text" name="userID" class="text" value="USERNAME" onfocus="this.value = '';" onblur="if (this.value == '') {this.value='USERNAME';}">
+                <input type="password" name="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value='Password';}">
+                <div class="submit">
+                    <input type="submit" value="LOGIN">
+                </div>
+                <p><a href="#">Forgot Password ?</a></p>
+            </form>
+        </div>
+        <!--//End-login-form-->
+    </div>
+</div>
+
+

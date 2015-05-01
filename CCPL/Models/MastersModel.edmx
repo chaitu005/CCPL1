@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NSDLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NSDL.dbo.Book_size' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Book_size">
+          <Key>
+            <PropertyRef Name="bk_size" />
+          </Key>
+          <Property Name="bk_size" Type="smallint" Nullable="false" />
+          <Property Name="mkrid" Type="varchar" MaxLength="8" />
+          <Property Name="mkrdt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Instrument_master">
+          <Key>
+            <PropertyRef Name="im_instcd" />
+          </Key>
+          <Property Name="im_instcd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="im_desc" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="im_activeyn" Type="char" MaxLength="1" />
+          <Property Name="im_defaultyn" Type="char" MaxLength="1" />
+          <Property Name="mkrid" Type="varchar" MaxLength="8" />
+          <Property Name="mkrdt" Type="datetime" />
+          <Property Name="im_trtype" Type="int" />
+          <Property Name="im_reorderlevel" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Vendor_master">
+          <Key>
+            <PropertyRef Name="vm_cd" />
+          </Key>
+          <Property Name="vm_cd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vm_name" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="vm_add1" Type="varchar" MaxLength="36" />
+          <Property Name="vm_add2" Type="varchar" MaxLength="36" />
+          <Property Name="vm_add3" Type="varchar" MaxLength="36" />
+          <Property Name="vm_add4" Type="varchar" MaxLength="36" />
+          <Property Name="vm_pin" Type="varchar" MaxLength="7" />
+          <Property Name="vm_tel" Type="varchar" MaxLength="24" />
+          <Property Name="vm_email" Type="varchar" MaxLength="50" />
+          <Property Name="mkrid" Type="char" MaxLength="10" />
+          <Property Name="mkrdt" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityContainer Name="NSDLModelStoreContainer">
+          <EntitySet Name="Instrument_master" EntityType="Self.Instrument_master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendor_master" EntityType="Self.Vendor_master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Book_size" EntityType="Self.Book_size" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Book_size].[bk_size] AS [bk_size], 
+[Book_size].[mkrid] AS [mkrid], 
+[Book_size].[mkrdt] AS [mkrdt]
+FROM [dbo].[Book_size] AS [Book_size]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NSDLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Instrument_master">
+          <Key>
+            <PropertyRef Name="im_instcd" />
+          </Key>
+          <Property Name="im_instcd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="im_desc" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="im_activeyn" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="im_defaultyn" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="mkrid" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="mkrdt" Type="DateTime" Precision="3" />
+          <Property Name="im_trtype" Type="Int32" />
+          <Property Name="im_reorderlevel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Vendor_master">
+          <Key>
+            <PropertyRef Name="vm_cd" />
+          </Key>
+          <Property Name="vm_cd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vm_name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="vm_add1" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="vm_add2" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="vm_add3" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="vm_add4" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="vm_pin" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="vm_tel" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="vm_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mkrid" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="mkrdt" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Book_size">
+          <Key>
+            <PropertyRef Name="bk_size" />
+          </Key>
+          <Property Name="bk_size" Type="Int16" Nullable="false" />
+          <Property Name="mkrid" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="mkrdt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="NSDLEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Instrument_master" EntityType="Self.Instrument_master" />
+          <EntitySet Name="Vendor_master" EntityType="Self.Vendor_master" />
+          <EntitySet Name="Book_size" EntityType="Self.Book_size" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NSDLModelStoreContainer" CdmEntityContainer="NSDLEntities">
+          <EntitySetMapping Name="Instrument_master">
+            <EntityTypeMapping TypeName="NSDLModel.Instrument_master">
+              <MappingFragment StoreEntitySet="Instrument_master">
+                <ScalarProperty Name="im_instcd" ColumnName="im_instcd" />
+                <ScalarProperty Name="im_desc" ColumnName="im_desc" />
+                <ScalarProperty Name="im_activeyn" ColumnName="im_activeyn" />
+                <ScalarProperty Name="im_defaultyn" ColumnName="im_defaultyn" />
+                <ScalarProperty Name="mkrid" ColumnName="mkrid" />
+                <ScalarProperty Name="mkrdt" ColumnName="mkrdt" />
+                <ScalarProperty Name="im_trtype" ColumnName="im_trtype" />
+                <ScalarProperty Name="im_reorderlevel" ColumnName="im_reorderlevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendor_master">
+            <EntityTypeMapping TypeName="NSDLModel.Vendor_master">
+              <MappingFragment StoreEntitySet="Vendor_master">
+                <ScalarProperty Name="vm_cd" ColumnName="vm_cd" />
+                <ScalarProperty Name="vm_name" ColumnName="vm_name" />
+                <ScalarProperty Name="vm_add1" ColumnName="vm_add1" />
+                <ScalarProperty Name="vm_add2" ColumnName="vm_add2" />
+                <ScalarProperty Name="vm_add3" ColumnName="vm_add3" />
+                <ScalarProperty Name="vm_add4" ColumnName="vm_add4" />
+                <ScalarProperty Name="vm_pin" ColumnName="vm_pin" />
+                <ScalarProperty Name="vm_tel" ColumnName="vm_tel" />
+                <ScalarProperty Name="vm_email" ColumnName="vm_email" />
+                <ScalarProperty Name="mkrid" ColumnName="mkrid" />
+                <ScalarProperty Name="mkrdt" ColumnName="mkrdt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Book_size">
+            <EntityTypeMapping TypeName="NSDLModel.Book_size">
+              <MappingFragment StoreEntitySet="Book_size">
+                <ScalarProperty Name="bk_size" ColumnName="bk_size" />
+                <ScalarProperty Name="mkrid" ColumnName="mkrid" />
+                <ScalarProperty Name="mkrdt" ColumnName="mkrdt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

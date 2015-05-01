@@ -1,0 +1,79 @@
+﻿@model CCPL.Models.Stock
+@{
+    ViewBag.Title = "StockEntry";
+}
+
+<div class="main-content">
+    @using (Html.BeginForm("StockEntrySubmit", "Home",FormMethod.Post,Model))
+    {
+    
+    <table>
+        <thead>
+            <tr>
+                <th colspan="3"><h2>StockEntry</h2></th>
+            </tr>
+        </thead>
+        <tr>
+            <td> @Html.LabelFor(m => m.vendorCode) </td>
+            <td> @Html.DropDownListFor(m => m.instrumentCode, Model.VenodorList, "-Select-", new { @class = "form-control" })</td>
+            <td> @Html.ValidationMessageFor(m => m.vendorCode)</td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(m => m.refNo)</td>
+            <td> @Html.TextBoxFor(m => m.refNo, new { @class = "form-control" })</td>
+            <td> @Html.ValidationMessageFor(m => m.refNo)</td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(m => m.instrumentCode)</td>            
+            <td> @Html.DropDownListFor(m => m.instrumentCode, Model.instrumentCodeList, "-Select-", new { @class = "form-control" })</td>
+            <td> @Html.ValidationMessageFor(m => m.instrumentCode)</td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(m => m.date)</td>
+            <td> @Html.TextBoxFor(m => m.date, new {@class = "form-control datepicker" })</td>
+            <td> @Html.ValidationMessageFor(m => m.date)</td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(m => m.size)</td>
+            <td> @Html.DropDownListFor(m => m.instrumentCode, Model.BookSizeList, "-Select-", new { @class = "form-control" })</td>
+            <td> @Html.ValidationMessageFor(m => m.size)</td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(m => m.noOfBooks)</td>
+            <td> @Html.TextBoxFor(m => m.noOfBooks, new { @class = "form-control" })</td>
+            <td> @Html.ValidationMessageFor(m => m.noOfBooks)</td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(m => m.fromNo)</td>
+            <td> @Html.TextBoxFor(m => m.fromNo, new { @class = "form-control" })</td>
+            <td> @Html.ValidationMessageFor(m => m.fromNo)</td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(m => m.toNo)</td>
+            <td> @Html.TextBoxFor(m => m.toNo, new { @class = "form-control" })</td>
+            <td> @Html.ValidationMessageFor(m => m.toNo)</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button class="btn-stock">ADD</button>
+                <input type="button" class="btn-stock" value="Edit" />
+                <input type="button" class="btn-stock" value="SAVE" />
+                <input type="button" class="btn-stock" value="CLOSE" />
+                <input type="button" class="btn-stock" value="FIND" />
+            </td>
+
+        </tr>
+        @if (ViewBag.message != null)
+        {
+            <tr>
+                <td colspan="2" align="right">@ViewBag.message </td>
+            </tr>
+
+        }
+
+
+
+    </table>
+        
+    }
+</div>
